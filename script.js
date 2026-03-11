@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             try {
-                // Post data to our deployed Express server on Render
-                const response = await fetch('https://webbros-backend-1.onrender.com/api/contact', {
+                // Post data to our deployed Express server on Railway
+                const response = await fetch('https://webbros-backend-production.up.railway.app/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

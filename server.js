@@ -10,12 +10,13 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json()); // Parse JSON bodies
 
-// Setup Nodemailer Transporter
+// Setup Nodemailer Transporter using Brevo
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // You can change this if using a different provider
+    host: 'smtp-relay.brevo.com',
+    port: 587,
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: process.env.EMAIL_USER, // This will be the Brevo login (usually your email)
+        pass: process.env.EMAIL_PASS  // This will be the new long Brevo key
     }
 });
 
