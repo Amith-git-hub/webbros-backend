@@ -115,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             try {
-                // Post data to our local Express server
-                const response = await fetch('http://localhost:3000/api/contact', {
+                // Post data to our deployed Express server on Render
+                const response = await fetch('https://webbros-backend-1.onrender.com/api/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error Sending';
                 btn.style.background = '#ef4444'; // red 500
                 btn.style.boxShadow = '0 4px 15px rgba(239, 68, 68, 0.4)';
-                alert('Oops! There was an issue sending your message. Make sure the Node server is running.');
+                alert('Oops! There was an issue sending your message. Please try again later.');
             } finally {
                 // Reset button state after 3 seconds
                 setTimeout(() => {

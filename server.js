@@ -12,10 +12,16 @@ app.use(express.json()); // Parse JSON bodies
 
 // Setup Nodemailer Transporter
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // You can change this if using a different provider
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // use SSL
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    // Required to prevent Render from trying to use IPv6 and timing out
+    tls: {
+        rejectUnauthorized: false
     }
 });
 
