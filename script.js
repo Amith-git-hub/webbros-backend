@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
-        
+
         // Prevent body scroll when menu is open
-        if(navLinks.classList.contains('active')) {
+        if (navLinks.classList.contains('active')) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'auto';
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Sticky Navbar Effect --- */
     const navbar = document.getElementById('navbar');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Active Navigation Link Update --- */
     const sections = document.querySelectorAll('section');
-    
+
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Group items inside .staggered-group to apply delays
     const staggeredGroups = document.querySelectorAll('.staggered-group');
-    
+
     staggeredGroups.forEach(group => {
         const items = group.querySelectorAll('.staggered-item');
         items.forEach((item, index) => {
@@ -97,12 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- Form Submission to Backend API --- */
     const contactForm = document.getElementById('contactForm');
-    if(contactForm) {
+    if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
-            
+
             // Basic UI feedback
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
             btn.style.opacity = '0.8';
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 email: document.getElementById('email').value,
                 message: document.getElementById('message').value
             };
-            
+
             try {
                 // Post data to our deployed Express server on Railway
                 const response = await fetch('https://webbros-backend-production.up.railway.app/api/contact', {

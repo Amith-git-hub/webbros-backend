@@ -15,8 +15,8 @@ const transporter = nodemailer.createTransport({
     host: 'smtp-relay.brevo.com',
     port: 587,
     auth: {
-        user: process.env.EMAIL_USER, // This will be the Brevo login (usually your email)
-        pass: process.env.EMAIL_PASS  // This will be the new long Brevo key
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
@@ -61,7 +61,7 @@ app.post('/api/contact', async (req, res) => {
         // Send the email
         const info = await transporter.sendMail(mailOptions);
         console.log('Message sent: %s', info.messageId);
-        
+
         // Return success response to the frontend
         res.status(200).json({ success: true, message: 'Message sent successfully!' });
     } catch (error) {
