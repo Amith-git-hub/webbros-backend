@@ -608,9 +608,12 @@ img {
    Contact Section
    ========================================================================== */
 .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    width: 100%;
 }
 
 .contact-message {
@@ -653,38 +656,6 @@ img {
 .contact-item p {
     color: var(--clr-text-muted);
     line-height: 1.4;
-}
-
-/* Form Styles */
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--clr-text-main);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--clr-border);
-    border-radius: 8px;
-    color: var(--clr-text-main);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--clr-gradient-mid);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 /* ==========================================================================

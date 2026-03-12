@@ -3,7 +3,6 @@
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
-
     /* --- Mobile Navigation Toggle --- */
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -95,61 +94,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* --- Form Submission to Backend API --- */
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-
-            // Basic UI feedback
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-            btn.style.opacity = '0.8';
-            btn.disabled = true;
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
-
-            try {
-                // Post data to our deployed Express server on Railway
-                const response = await fetch('https://webbros-backend-production.up.railway.app/api/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-                    btn.style.background = '#10b981'; // emerald 500
-                    btn.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.4)';
-                    contactForm.reset();
-                } else {
-                    throw new Error(result.error || 'Failed to send message');
-                }
-            } catch (error) {
-                console.error('Submission Error:', error);
-                btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error Sending';
-                btn.style.background = '#ef4444'; // red 500
-                btn.style.boxShadow = '0 4px 15px rgba(239, 68, 68, 0.4)';
-                alert('Oops! There was an issue sending your message. Please try again later.');
-            } finally {
-                // Reset button state after 3 seconds
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.style.boxShadow = '';
-                    btn.style.opacity = '1';
-                    btn.disabled = false;
-                }, 4000);
-            }
-        });
-    }
 });
